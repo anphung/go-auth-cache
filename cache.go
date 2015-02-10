@@ -64,10 +64,10 @@ func (c *Cache) ServeHTTP(w http.ResponseWriter, req *http.Request, next http.Ha
 		// Call next middleware
 		next(w, req)
 
-		authenticated = w.Header().Get(AuthenticatedHeader)
+		order := w.Header().Get(AuthenticatedHeader)
 		// Cache this credential if ordered by other middleware.
-		if authenticated == "cache" {
-			c.Set(credential, authenticated, gcache.DefaultExpiration)
+		if order == "cache" {
+			c.Set(credential, "true", gcache.DefaultExpiration)
 		}
 
 		// Remove AuthenticatedHeader out of response header.
