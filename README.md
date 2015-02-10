@@ -1,2 +1,2 @@
 # go-auth-cache
-Caching (GET, POST) requests which have "Authorization" header.
+Authenticate requests by checking request's "Authorization" header in cache.
