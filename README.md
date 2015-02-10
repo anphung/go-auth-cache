@@ -13,8 +13,8 @@ Before exists, this middleware cache the request if http.ResponseWriter's header
 authCacheMiddleware := cache.NewDefault()
 ```
 
-We then plug ```authCacheMiddleware``` in front of any middleware.
+We then plug ```authCacheMiddleware``` in front of any middleware. Check [this](https://github.com/anphung/negroni-auth-dynamodb/commit/41ea28a8a2ac40db369ab90009c38ecede3cba2b) for example.
 
-Note: Any of the following middleware of this middleware has to __explicitly__ set http.ResponseWriter's header "go-auth-cache-Authenticated" to:
+_Note:_ Any of the following middleware of this middleware has to __explicitly__ set http.ResponseWriter's header "go-auth-cache-Authenticated" to:
 * "cache", if it want the request to be cached.
 * don't set, do nothing.
