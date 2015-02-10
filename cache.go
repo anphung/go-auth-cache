@@ -64,9 +64,9 @@ func (c *Cache) ServeHTTP(w http.ResponseWriter, req *http.Request, next http.Ha
 		// Call next middleware
 		next(w, req)
 
-		// Set cache for this credential.
 		authenticated = w.Header().Get(AuthenticatedHeader)
-		if authenticated == "true" {
+		// Cache this credential if ordered by other middleware.
+		if authenticated == "cache" {
 			c.Set(credential, authenticated, gcache.DefaultExpiration)
 		}
 
